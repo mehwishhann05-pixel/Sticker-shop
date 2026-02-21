@@ -3,176 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pastel Sticker Shop</title>
+    <title>StickyMood - Custom AI Stickers</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Social Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            --bg-color: #FFF9F5;       /* Creamy White */
-            --primary-pastel: #FFD1DC; /* Pastel Pink */
-            --secondary-pastel: #C1E1C1; /* Pastel Mint */
-            --tertiary-pastel: #AEC6CF; /* Pastel Blue */
+            --bg-color: #FFF9F5;
+            --primary-pastel: #FFD1DC;
+            --secondary-pastel: #C1E1C1;
+            --tertiary-pastel: #AEC6CF;
             --lavender-pastel: #E6E6FA;
-            --text-color: #555555;     /* Soft Dark Gray */
+            --text-color: #555555;
             --white: #ffffff;
             --shadow: 0 10px 25px rgba(0,0,0,0.05);
             --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
 
         /* --- NAVIGATION --- */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
+            position: fixed; top: 0; width: 100%;
             background: rgba(255, 249, 245, 0.95);
             backdrop-filter: blur(5px);
             padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.03);
         }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
+        .logo span { color: #FFB7B2; }
+        nav ul { display: flex; gap: 2rem; }
+        nav a { font-weight: 500; font-size: 0.95rem; position: relative; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--primary-pastel); transition: var(--transition); }
+        nav a:hover::after { width: 100%; }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-color);
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: #FFB7B2;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary-pastel);
-            transition: var(--transition);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 80vh;
+        /* --- HERO / AI SECTION --- */
+        .hero-section {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 0 20px;
-            margin-top: 60px;
+            padding: 120px 20px 60px 20px;
+            background: linear-gradient(180deg, var(--lavender-pastel) 0%, var(--bg-color) 100%);
         }
 
-        .hero h1 {
+        .hero-content { max-width: 800px; width: 100%; }
+
+        .hero-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.2;
+            color: #333;
         }
 
-        .hero p {
-            font-size: 1.2rem;
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+        }
+
+        /* AI Generator Card */
+        .ai-generator-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            width: 100%;
             max-width: 600px;
-            margin-bottom: 2rem;
-            color: #777;
-        }
-
-        .cta-button {
-            background-color: var(--primary-pastel);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(255, 209, 220, 0.4);
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            background-color: #ffbcc2;
-            box-shadow: 0 8px 20px rgba(255, 209, 220, 0.6);
-        }
-
-        /* --- SHOP SECTION --- */
-        .shop-section {
-            padding: 4rem 5%;
-            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: var(--text-color);
+        .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 1rem;
+            transition: var(--transition);
         }
 
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--tertiary-pastel);
+        }
+
+        .generate-btn {
+            width: 100%;
+            background-color: var(--secondary-pastel);
+            color: #4a5a4a;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .generate-btn:hover { background-color: #a8d6a8; transform: translateY(-2px); }
+        .generate-btn:disabled { background-color: #ddd; cursor: wait; }
+
+        /* Preview Area */
+        .preview-area {
+            display: none; /* Hidden by default */
+            margin-top: 2rem;
+            animation: fadeUp 0.6s ease;
+            border-top: 1px solid #eee;
+            padding-top: 2rem;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .generated-image-frame {
+            width: 100%;
+            max-width: 350px;
+            height: 350px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #f9f9f9;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .generated-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Action Buttons Grid */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .action-btn {
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-dl { grid-column: span 2; background-color: var(--primary-pastel); color: white; }
+        .btn-dl:hover { background-color: #ffbcc2; }
+
+        .btn-outline { background: white; border: 2px solid #eee; color: #555; }
+        .btn-outline:hover { border-color: var(--tertiary-pastel); color: var(--tertiary-pastel); background: #fcfcfc; }
+
+        /* --- SHOP SECTION --- */
+        .shop-section { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2rem; margin-bottom: 3rem; }
+        
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -191,278 +210,57 @@
             align-items: center;
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
 
-        .image-container {
-            width: 100%;
-            height: 250px;
+        .img-wrapper {
+            width: 100%; height: 250px;
             background-color: #f0f0f0;
             border-radius: 15px;
             margin-bottom: 1rem;
             overflow: hidden;
-            position: relative;
         }
 
-        .product-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .img-wrapper img { transform: scale(1.05); }
 
-        .product-card:hover .product-img {
-            transform: scale(1.05);
-        }
-
-        .product-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-price {
-            color: #888;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
+        .product-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .product-price { color: #888; margin-bottom: 1rem; }
 
         .buy-btn {
-            background-color: var(--secondary-pastel);
-            color: #4a5a4a;
+            background-color: var(--tertiary-pastel);
+            color: white;
             border: none;
             padding: 10px 25px;
             border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
             width: 100%;
             margin-top: auto;
-        }
-
-        .buy-btn:hover {
-            background-color: #a8d6a8;
-            transform: scale(1.02);
-        }
-
-        /* --- AI GENERATOR SECTION --- */
-        .ai-section {
-            background-color: var(--lavender-pastel);
-            padding: 4rem 5%;
-            text-align: center;
-        }
-
-        .ai-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 25px;
-            box-shadow: var(--shadow);
-        }
-
-        .input-group {
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #666;
-        }
-
-        .prompt-input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #eee;
-            border-radius: 15px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            resize: vertical;
-            min-height: 80px;
             transition: var(--transition);
         }
-
-        .prompt-input:focus {
-            outline: none;
-            border-color: var(--tertiary-pastel);
-        }
-
-        .generate-btn {
-            background-color: var(--tertiary-pastel);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .generate-btn:hover {
-            background-color: #9bb6c9;
-            transform: translateY(-2px);
-        }
-
-        .generate-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        /* AI Result Area */
-        .ai-result {
-            margin-top: 2rem;
-            display: none; /* Hidden by default */
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .generated-image-container {
-            width: 100%;
-            max-width: 400px;
-            height: 400px;
-            margin: 0 auto 2rem auto;
-            border-radius: 15px;
-            overflow: hidden;
-            background: #f9f9f9;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .generated-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .print-options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .print-btn {
-            background: white;
-            border: 2px solid var(--secondary-pastel);
-            color: #555;
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .print-btn:hover {
-            background-color: var(--secondary-pastel);
-            color: white;
-        }
-
-        .download-btn {
-            background-color: var(--primary-pastel);
-            color: white;
-            border: none;
-        }
-        
-        .download-btn:hover {
-            background-color: #ffbcc2;
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about-section {
-            background-color: white;
-            padding: 4rem 5%;
-            text-align: center;
-        }
-        
-        .about-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
+        .buy-btn:hover { background-color: #9bb6c9; }
 
         /* --- FOOTER --- */
-        footer {
-            background-color: #fff;
-            padding: 3rem 5%;
-            text-align: center;
-            border-top: 1px solid #eee;
-        }
-
-        .social-links {
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
-            font-size: 1.5rem;
-            color: var(--text-color);
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            color: var(--primary-pastel);
-            transform: rotate(10deg);
-        }
-
-        .copyright {
-            font-size: 0.8rem;
-            color: #aaa;
-        }
+        footer { background-color: #fff; padding: 3rem 5%; text-align: center; border-top: 1px solid #eee; margin-top: 4rem; }
+        .social-links { margin-bottom: 1.5rem; }
+        .social-links a { display: inline-block; margin: 0 10px; font-size: 1.5rem; color: var(--text-color); transition: var(--transition); }
+        .social-links a:hover { color: var(--primary-pastel); transform: rotate(10deg); }
+        .copyright { font-size: 0.8rem; color: #aaa; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
+            .hero-title { font-size: 2rem; }
+            .menu-toggle { display: block; }
             nav ul {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                gap: 1.5rem;
-                transform: translateY(-150%);
-                transition: var(--transition);
+                position: fixed; top: 70px; left: 0; width: 100%;
+                background: white; flex-direction: column; align-items: center;
+                padding: 2rem 0; gap: 1.5rem;
+                transform: translateY(-150%); transition: var(--transition);
                 box-shadow: 0 10px 10px rgba(0,0,0,0.05);
             }
-
-            nav ul.active {
-                transform: translateY(0);
-            }
-
-            .print-options {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .print-btn {
-                justify-content: center;
-            }
+            nav ul.active { transform: translateY(0); }
+            .actions-grid { grid-template-columns: 1fr; }
+            .btn-dl { grid-column: span 1; }
         }
     </style>
 </head>
@@ -471,85 +269,67 @@
     <!-- Navigation -->
     <header>
         <div class="logo">Sticky<span>Mood</span></div>
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fas fa-bars"></i>
-        </div>
+        <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
         <nav>
             <ul id="nav-list">
-                <li><a href="#hero">Home</a></li>
+                <li><a href="#hero-section">Home</a></li>
                 <li><a href="#shop">Shop</a></li>
-                <li><a href="#ai-generator">AI Studio</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <h1>Cute Aesthetic Stickers<br>for Your Everyday Mood</h1>
-        <p>Decorate your laptop, journal, or water bottle with our minimal pastel designs. Ships worldwide!</p>
-        <a href="#shop" class="cta-button">Browse Collection</a>
+    <!-- Hero / AI Generator Section -->
+    <section id="hero-section" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Turn Your Idea Into a Custom Sticker, T-Shirt or Phone Case</h1>
+            <p class="hero-subtitle">Describe your design below and let our AI bring it to life instantly.</p>
+            
+            <div class="ai-generator-card">
+                <div class="input-group">
+                    <textarea id="user-prompt" placeholder="Describe your idea (e.g., A cute pastel astronaut with a cat, vector art style)..."></textarea>
+                </div>
+                <button id="generate-btn" class="generate-btn">
+                    <i class="fas fa-magic"></i> Generate Design
+                </button>
+
+                <div id="preview-container" class="preview-area">
+                    <div class="generated-image-frame">
+                        <img id="result-img" src="" alt="Generated Design">
+                    </div>
+                    
+                    <div class="actions-grid">
+                        <a id="dl-link" href="#" target="_blank" class="action-btn btn-dl">
+                            <i class="fas fa-download"></i> Download Design
+                        </a>
+                        <a id="print-sticker" href="#" target="_blank" class="action-btn btn-outline">
+                            <i class="fas fa-sticky-note"></i> Sticker
+                        </a>
+                        <a id="print-shirt" href="#" target="_blank" class="action-btn btn-outline">
+                            <i class="fas fa-tshirt"></i> T-Shirt
+                        </a>
+                        <a id="print-case" href="#" target="_blank" class="action-btn btn-outline">
+                            <i class="fas fa-mobile-alt"></i> Phone Case
+                        </a>
+                        <a id="print-notebook" href="#" target="_blank" class="action-btn btn-outline">
+                            <i class="fas fa-book"></i> Notebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Shop Section -->
     <section id="shop" class="shop-section">
-        <h2 class="section-title">Latest Designs</h2>
+        <h2 class="section-title">Trending Collections</h2>
         <div class="product-grid" id="product-container">
             <!-- Products injected via JS -->
         </div>
     </section>
 
-    <!-- AI Generator Section -->
-    <section id="ai-generator" class="ai-section">
-        <div class="ai-container">
-            <h2 class="section-title">✨ Create Your Own Sticker</h2>
-            <p style="margin-bottom: 1.5rem; color: #777;">Describe your dream sticker and let AI generate it for you!</p>
-            
-            <div class="input-group">
-                <label for="design-prompt">Describe your design:</label>
-                <textarea id="design-prompt" class="prompt-input" placeholder="e.g., A cute pastel cat sitting on a cloud, kawaii style, minimal vector art..."></textarea>
-            </div>
-
-            <button id="generate-btn" class="generate-btn">
-                <i class="fas fa-magic"></i> Generate Design
-            </button>
-
-            <div id="ai-result" class="ai-result">
-                <div class="generated-image-container">
-                    <img id="generated-img" class="generated-img" src="" alt="Generated Sticker">
-                </div>
-                
-                <div class="print-options">
-                    <a id="dl-btn" href="#" download="my-sticker.png" class="print-btn download-btn">
-                        <i class="fas fa-download"></i> Download Design
-                    </a>
-                    <a id="print-sticker" href="#" target="_blank" class="print-btn">
-                        <i class="fas fa-sticky-note"></i> Print as Sticker
-                    </a>
-                    <a id="print-shirt" href="#" target="_blank" class="print-btn">
-                        <i class="fas fa-tshirt"></i> Print as T-Shirt
-                    </a>
-                    <a id="print-phone" href="#" target="_blank" class="print-btn">
-                        <i class="fas fa-mobile-alt"></i> Print as Phone Case
-                    </a>
-                    <a id="print-notebook" href="#" target="_blank" class="print-btn">
-                        <i class="fas fa-book"></i> Print as Notebook
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <h2 class="section-title">About Us</h2>
-            <p>We believe that small details bring big joy. Our stickers are designed with love, printed on premium vinyl, and made to stick around. Perfect for adding a touch of personality to your everyday items.</p>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="social-links">
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -560,7 +340,7 @@
     </footer>
 
     <script>
-        // --- Mobile Menu Toggle ---
+        // --- Mobile Menu Logic ---
         const mobileMenu = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
 
@@ -568,7 +348,7 @@
             navList.classList.toggle('active');
         });
 
-        // --- Product Data & Rendering ---
+        // --- Shop Data ---
         const products = [
             { name: "Pastel Cloud", price: "$3.50", img: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=400&q=80", link: "https://www.redbubble.com/" },
             { name: "Kawaii Bear", price: "$3.50", img: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=400&q=80", link: "https://www.redbubble.com/" },
@@ -577,12 +357,11 @@
         ];
 
         const productContainer = document.getElementById('product-container');
-
         products.forEach(product => {
             const card = document.createElement('div');
             card.className = 'product-card';
             card.innerHTML = `
-                <div class="image-container">
+                <div class="img-wrapper">
                     <img src="${product.img}" alt="${product.name}" class="product-img">
                 </div>
                 <h3 class="product-name">${product.name}</h3>
@@ -594,67 +373,33 @@
 
         // --- AI Generator Logic ---
         const generateBtn = document.getElementById('generate-btn');
-        const promptInput = document.getElementById('design-prompt');
-        const resultContainer = document.getElementById('ai-result');
-        const generatedImg = document.getElementById('generated-img');
-        const dlBtn = document.getElementById('dl-btn');
-        
+        const promptInput = document.getElementById('user-prompt');
+        const previewContainer = document.getElementById('preview-container');
+        const resultImg = document.getElementById('result-img');
+        const dlLink = document.getElementById('dl-link');
+
         // Print Links
         const printSticker = document.getElementById('print-sticker');
         const printShirt = document.getElementById('print-shirt');
-        const printPhone = document.getElementById('print-phone');
+        const printCase = document.getElementById('print-case');
         const printNotebook = document.getElementById('print-notebook');
 
         generateBtn.addEventListener('click', () => {
             const prompt = promptInput.value.trim();
             
             if (!prompt) {
-                alert("Please describe your sticker idea first!");
+                alert("Please enter a description for your sticker!");
                 return;
             }
 
-            // Loading State
-            generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            // Loading Animation
+            generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating...';
             generateBtn.disabled = true;
-            resultContainer.style.display = 'none';
+            previewContainer.style.display = 'none';
 
-            // Construct Pollinations URL
-            // We add some default style keywords to ensure it looks like a sticker
-            const encodedPrompt = encodeURIComponent(prompt + " sticker, white background, high quality, vector art style");
+            // Construct URL: Adding "sticker white background" to prompt helps ensure usable assets
+            const encodedPrompt = encodeURIComponent(prompt + " sticker aesthetic white background");
+            // Use Pollinations AI
             const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&nologo=true`;
 
-            // Create a temporary image object to ensure it loads before showing
-            const tempImg = new Image();
-            tempImg.src = imageUrl;
-            
-            tempImg.onload = () => {
-                // Success
-                generatedImg.src = imageUrl;
-                resultContainer.style.display = 'block';
-                
-                // Update Download Link
-                dlBtn.href = imageUrl;
-                
-                // Update Print Links (Simulated Redbubble Search)
-                // In a real app, this would upload the image. Here we search for the prompt.
-                const searchQuery = encodeURIComponent(prompt);
-                printSticker.href = `https://www.redbubble.com/search/sticker?query=${searchQuery}`;
-                printShirt.href = `https://www.redbubble.com/search/t-shirt?query=${searchQuery}`;
-                printPhone.href = `https://www.redbubble.com/search/phone-case?query=${searchQuery}`;
-                printNotebook.href = `https://www.redbubble.com/search/notebook?query=${searchQuery}`;
-
-                // Reset Button
-                generateBtn.innerHTML = '<i class="fas fa-magic"></i> Generate Design';
-                generateBtn.disabled = false;
-            };
-
-            tempImg.onerror = () => {
-                alert("Failed to generate image. Please try again.");
-                generateBtn.innerHTML = '<i class="fas fa-magic"></i> Generate Design';
-                generateBtn.disabled = false;
-            };
-        });
-    </script>
-</body>
-</html>
-```
+            // Pre
