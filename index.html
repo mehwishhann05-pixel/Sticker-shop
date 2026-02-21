@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +20,7 @@
             --primary-pastel: #FFD1DC; /* Pastel Pink */
             --secondary-pastel: #C1E1C1; /* Pastel Mint */
             --tertiary-pastel: #AEC6CF; /* Pastel Blue */
+            --lavender-pastel: #E6E6FA;
             --text-color: #555555;     /* Soft Dark Gray */
             --white: #ffffff;
             --shadow: 0 10px 25px rgba(0,0,0,0.05);
@@ -77,7 +77,7 @@
         }
 
         .logo span {
-            color: #FFB7B2; /* Slightly darker pink */
+            color: #FFB7B2;
         }
 
         nav ul {
@@ -106,7 +106,6 @@
             width: 100%;
         }
 
-        /* Mobile Menu Toggle (Hidden on Desktop) */
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
@@ -122,7 +121,7 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            margin-top: 60px; /* Offset fixed header */
+            margin-top: 60px;
         }
 
         .hero h1 {
@@ -149,6 +148,8 @@
             font-size: 1rem;
             transition: var(--transition);
             box-shadow: 0 5px 15px rgba(255, 209, 220, 0.4);
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
@@ -212,7 +213,6 @@
             transition: transform 0.5s ease;
         }
 
-        /* Sticker Effect */
         .product-card:hover .product-img {
             transform: scale(1.05);
         }
@@ -240,7 +240,7 @@
             font-family: 'Poppins', sans-serif;
             transition: var(--transition);
             width: 100%;
-            margin-top: auto; /* Pushes button to bottom */
+            margin-top: auto;
         }
 
         .buy-btn:hover {
@@ -248,12 +248,147 @@
             transform: scale(1.02);
         }
 
+        /* --- AI GENERATOR SECTION --- */
+        .ai-section {
+            background-color: var(--lavender-pastel);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .ai-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .input-group {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .prompt-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 80px;
+            transition: var(--transition);
+        }
+
+        .prompt-input:focus {
+            outline: none;
+            border-color: var(--tertiary-pastel);
+        }
+
+        .generate-btn {
+            background-color: var(--tertiary-pastel);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .generate-btn:hover {
+            background-color: #9bb6c9;
+            transform: translateY(-2px);
+        }
+
+        .generate-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* AI Result Area */
+        .ai-result {
+            margin-top: 2rem;
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .generated-image-container {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            margin: 0 auto 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #f9f9f9;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .generated-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .print-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .print-btn {
+            background: white;
+            border: 2px solid var(--secondary-pastel);
+            color: #555;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .print-btn:hover {
+            background-color: var(--secondary-pastel);
+            color: white;
+        }
+
+        .download-btn {
+            background-color: var(--primary-pastel);
+            color: white;
+            border: none;
+        }
+        
+        .download-btn:hover {
+            background-color: #ffbcc2;
+        }
+
         /* --- ABOUT SECTION --- */
         .about-section {
             background-color: white;
             padding: 4rem 5%;
             text-align: center;
-            margin-top: 4rem;
         }
         
         .about-content {
@@ -267,7 +402,6 @@
             padding: 3rem 5%;
             text-align: center;
             border-top: 1px solid #eee;
-            margin-top: 4rem;
         }
 
         .social-links {
@@ -320,6 +454,15 @@
             nav ul.active {
                 transform: translateY(0);
             }
+
+            .print-options {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .print-btn {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -335,8 +478,8 @@
             <ul id="nav-list">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#shop">Shop</a></li>
+                <li><a href="#ai-generator">AI Studio</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -352,7 +495,48 @@
     <section id="shop" class="shop-section">
         <h2 class="section-title">Latest Designs</h2>
         <div class="product-grid" id="product-container">
-            <!-- Products will be injected here via JavaScript -->
+            <!-- Products injected via JS -->
+        </div>
+    </section>
+
+    <!-- AI Generator Section -->
+    <section id="ai-generator" class="ai-section">
+        <div class="ai-container">
+            <h2 class="section-title">✨ Create Your Own Sticker</h2>
+            <p style="margin-bottom: 1.5rem; color: #777;">Describe your dream sticker and let AI generate it for you!</p>
+            
+            <div class="input-group">
+                <label for="design-prompt">Describe your design:</label>
+                <textarea id="design-prompt" class="prompt-input" placeholder="e.g., A cute pastel cat sitting on a cloud, kawaii style, minimal vector art..."></textarea>
+            </div>
+
+            <button id="generate-btn" class="generate-btn">
+                <i class="fas fa-magic"></i> Generate Design
+            </button>
+
+            <div id="ai-result" class="ai-result">
+                <div class="generated-image-container">
+                    <img id="generated-img" class="generated-img" src="" alt="Generated Sticker">
+                </div>
+                
+                <div class="print-options">
+                    <a id="dl-btn" href="#" download="my-sticker.png" class="print-btn download-btn">
+                        <i class="fas fa-download"></i> Download Design
+                    </a>
+                    <a id="print-sticker" href="#" target="_blank" class="print-btn">
+                        <i class="fas fa-sticky-note"></i> Print as Sticker
+                    </a>
+                    <a id="print-shirt" href="#" target="_blank" class="print-btn">
+                        <i class="fas fa-tshirt"></i> Print as T-Shirt
+                    </a>
+                    <a id="print-phone" href="#" target="_blank" class="print-btn">
+                        <i class="fas fa-mobile-alt"></i> Print as Phone Case
+                    </a>
+                    <a id="print-notebook" href="#" target="_blank" class="print-btn">
+                        <i class="fas fa-book"></i> Print as Notebook
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -364,5 +548,113 @@
         </div>
     </section>
 
-    <!-- Contact/Footer -->
-    <footer id="contact">
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p class="copyright">&copy; 2023 StickyMood. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // --- Product Data & Rendering ---
+        const products = [
+            { name: "Pastel Cloud", price: "$3.50", img: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=400&q=80", link: "https://www.redbubble.com/" },
+            { name: "Kawaii Bear", price: "$3.50", img: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=400&q=80", link: "https://www.redbubble.com/" },
+            { name: "Minimal Moon", price: "$3.00", img: "https://images.unsplash.com/photo-1490750967868-58cb7506deed?auto=format&fit=crop&w=400&q=80", link: "https://www.redbubble.com/" },
+            { name: "Sunflower Vibes", price: "$4.00", img: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=400&q=80", link: "https://www.redbubble.com/" }
+        ];
+
+        const productContainer = document.getElementById('product-container');
+
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="image-container">
+                    <img src="${product.img}" alt="${product.name}" class="product-img">
+                </div>
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-price">${product.price}</p>
+                <a href="${product.link}" target="_blank" class="buy-btn">Buy Now</a>
+            `;
+            productContainer.appendChild(card);
+        });
+
+        // --- AI Generator Logic ---
+        const generateBtn = document.getElementById('generate-btn');
+        const promptInput = document.getElementById('design-prompt');
+        const resultContainer = document.getElementById('ai-result');
+        const generatedImg = document.getElementById('generated-img');
+        const dlBtn = document.getElementById('dl-btn');
+        
+        // Print Links
+        const printSticker = document.getElementById('print-sticker');
+        const printShirt = document.getElementById('print-shirt');
+        const printPhone = document.getElementById('print-phone');
+        const printNotebook = document.getElementById('print-notebook');
+
+        generateBtn.addEventListener('click', () => {
+            const prompt = promptInput.value.trim();
+            
+            if (!prompt) {
+                alert("Please describe your sticker idea first!");
+                return;
+            }
+
+            // Loading State
+            generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            generateBtn.disabled = true;
+            resultContainer.style.display = 'none';
+
+            // Construct Pollinations URL
+            // We add some default style keywords to ensure it looks like a sticker
+            const encodedPrompt = encodeURIComponent(prompt + " sticker, white background, high quality, vector art style");
+            const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=512&height=512&nologo=true`;
+
+            // Create a temporary image object to ensure it loads before showing
+            const tempImg = new Image();
+            tempImg.src = imageUrl;
+            
+            tempImg.onload = () => {
+                // Success
+                generatedImg.src = imageUrl;
+                resultContainer.style.display = 'block';
+                
+                // Update Download Link
+                dlBtn.href = imageUrl;
+                
+                // Update Print Links (Simulated Redbubble Search)
+                // In a real app, this would upload the image. Here we search for the prompt.
+                const searchQuery = encodeURIComponent(prompt);
+                printSticker.href = `https://www.redbubble.com/search/sticker?query=${searchQuery}`;
+                printShirt.href = `https://www.redbubble.com/search/t-shirt?query=${searchQuery}`;
+                printPhone.href = `https://www.redbubble.com/search/phone-case?query=${searchQuery}`;
+                printNotebook.href = `https://www.redbubble.com/search/notebook?query=${searchQuery}`;
+
+                // Reset Button
+                generateBtn.innerHTML = '<i class="fas fa-magic"></i> Generate Design';
+                generateBtn.disabled = false;
+            };
+
+            tempImg.onerror = () => {
+                alert("Failed to generate image. Please try again.");
+                generateBtn.innerHTML = '<i class="fas fa-magic"></i> Generate Design';
+                generateBtn.disabled = false;
+            };
+        });
+    </script>
+</body>
+</html>
+```
